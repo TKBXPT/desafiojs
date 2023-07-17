@@ -422,7 +422,8 @@ function sumaTodosImpares(array) {
   // Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML
   // agregar tu nombre al final del texto actual. Ej: 'Aplicación creada por Franco'
   // Tu código acá: 
-  
+  const span = document.querySelector("#createdBy");
+  span.innerHTML = span.innerHTML + " Ismael";
   //-----------------------------------------------------------------------------------------------------------------------
   
   // La función debe realizar lo siguiente:
@@ -437,24 +438,36 @@ function sumaTodosImpares(array) {
   //          - Si es false: no asignarle ninguna clase
   //    7) Agregar 'toDoText' como hijo de 'toDoShell'
   //    8) Devolver la variable toDoShell
+ 
   
-  
-  function buildToDo(todo, index) { //todo es un objeto de la clase TODO. //index numerico 
+  function buildToDo(toDo, index) { //todo es un objeto de la clase TODO. //index numerico 
     // Tu código acá:
    
-    // Consigna 3
-   
-    // Consigna 4
+      //1)
+      const toDoShell = document.createElement("div");
     
-    // Consigna 5
-   
-    // Consigna 6
-   
-    // Consigna 7
+      // 2)
+      toDoShell.className = "toDoShell";
     
-    // Consigna 8
+      // 3)
+      const toDoText = document.createElement("span");
     
-  
+      // 4)
+      toDoText.innerHTML = toDo.description;
+    
+      // 5)
+      toDoText.id = index;
+    
+      // 6)
+      if (toDo.complete) {
+        toDoText.className = "completeText";
+      }
+    
+      // 7)'
+      toDoShell.appendChild(toDoText);
+    
+      // 8)
+      return toDoShell;
   }
   
   //-----------------------------------------------------------------------------------------------------------------------
@@ -470,15 +483,15 @@ function sumaTodosImpares(array) {
   function displayToDos() {
   // Tu código acá:
   //Paso 1; 
-   
+  const toDoContainer = document.getElementById("toDoContainer");
   // Paso 2: 
-    
+  toDoContainer.innerHTML = "";
   // Paso 3;
-  
+  const toDoElements = buildToDos(toDoItems);
    //Paso 4; 
-  
-   
-  
-  }; 
-  
+   toDoElements.forEach((toDoElement) => {
+    toDoContainer.appendChild(toDoElement);
+  });
+}; 
+displayToDos();
   //-----------------------------------------------------------------------------------------------------------------------
